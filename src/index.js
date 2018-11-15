@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './Routes';
 import * as serviceWorker from './serviceWorker';
 
 /**
  * Included necessary libraries for redux
  */
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 // Created a base reducer
-import reducer from './reducer';
+import rootReducer from './rootReducer';
+
 import './index.css';
 
 // created initial store
-const store = createStore(reducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   //implemented the provider for redux to function properly
